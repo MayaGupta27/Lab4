@@ -8,19 +8,33 @@
  * 5. Remove unnecessary comments as appropriate
  */
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
+public class ReclamationProject {
+    public static void main(final String[] args) {
+       String test = testsEquality("calculus", "calc");
+       System.out.println(test);
+    }
+    static String testsEquality(String initial, String second) {
+        //Makes sure string a is longer
+        if (initial.length() > second.length()) {
+            String temp = initial; //set temp string equal to a
+            initial = second;
+            second = temp;
+        }
+        String similar = "";
         /*
          * For loop with i
          */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
-        } return r; }
+        //Iterates through string a
+        for (int i = 0; i < initial.length(); i++) {
+          //Iterates backwards from i through the beginning of the string
+            for (int j = initial.length() - i; j > 0; j--) {
+                for (int k = 0; k < second.length() - j; k++) { //Iterates through string b
+                   if (initial.regionMatches(true, i, second, k, j) && j > similar.length()) {
+                       similar = initial.substring(i, i + j);
+                   }
+                }
+            }
+        }
+            return similar;
+     }
 }
